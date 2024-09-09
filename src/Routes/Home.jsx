@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <main className="">
-      <h1 className="font-bold text-xl text-primary">Home</h1>
+      <h1 className="font-bold text-xl text-secondary">Home</h1>
       <div className="card-grid">
         {/* Aqui deberias renderizar las cards */}
         {cards}
