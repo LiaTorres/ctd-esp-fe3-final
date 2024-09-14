@@ -1,25 +1,14 @@
 import { useState } from "react";
 import React, { useEffect } from "react";
 import Card from "../Components/Card";
+import { useChartStates } from "../Components/Context";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const { state } = useChartStates();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const data = await response.json();
-      setData(data);
-      return console.log(data);
-    };
-    fetchData();
-  }, []);
-
-  const cards = data.map((user) => {
+  const cards = state?.odontologos?.map((user) => {
     return (
       <Card
         key={user.id}
@@ -31,9 +20,9 @@ const Home = () => {
   });
 
   return (
-    <main className="">
-      <h1 className="font-bold text-xl text-secondary">Home</h1>
-      <div className="card-grid">
+    <main className="flex-1 dark:bg-bg_secondary py-8">
+      <h1 className="font-bold text-2xl text-primary pb-8">Home</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 place-items-center gap-x-4 gap-y-8 w-11/12 mx-auto">
         {/* Aqui deberias renderizar las cards */}
         {cards}
       </div>

@@ -1,5 +1,5 @@
 import { routes } from "./Components/utils/routes";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import Home from "./Routes/Home";
@@ -9,9 +9,10 @@ import Favs from "./Routes/Favs";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-col min-h-screen">
       <Navbar />
       <Routes>
+        <Route path="/" element={<Navigate to={routes.home} replace />} />
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.contact} element={<Contact />} />
         <Route path={routes.favs} element={<Favs />} />
