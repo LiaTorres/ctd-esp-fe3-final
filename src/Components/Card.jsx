@@ -11,13 +11,17 @@ const Card = ({ name, username, id }) => {
   const { state, dispatch } = useChartStates();
   const isFav = state.favorites.find((fav) => fav.id === id);
 
-  const addFav = () => {
-    // Aqui iria la logica para agregar la Card en el localStorage
-    heartImg === Heart ? setHeartImg(HeartFill) : setHeartImg(Heart);
-    buttonText === "Add fav"
-      ? setButtonText("Remove fav")
-      : setButtonText("Add fav");
+  useEffect(() => {
+    if (isFav) {
+      setHeartImg(HeartFill);
+      setButtonText("Remove fav");
+    } else {
+      setHeartImg(Heart);
+      setButtonText("Add fav");
+    }
+  }, [isFav]);
 
+  const addFav = () => {
     dispatch({
       type: isFav ? "REMOVE_FAVORITE" : "ADD_FAVORITE",
       payload: { name, username, id },
