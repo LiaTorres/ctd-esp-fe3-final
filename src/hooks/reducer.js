@@ -33,7 +33,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         theme: newTheme,
       };
-      // return { ...state, theme: [...state.theme, action.payload] };
     default:
       return state;
   }

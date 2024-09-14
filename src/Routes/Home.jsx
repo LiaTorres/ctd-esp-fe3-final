@@ -21,7 +21,9 @@ const Home = () => {
 
   return (
     <main className="flex-1 dark:bg-bg_secondary py-8">
-      <h1 className="font-bold text-2xl text-primary pb-8">Home</h1>
+      <h1 className="font-bold text-2xl text-bg_secondary pb-8 dark:text-primary">
+        Home
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 place-items-center gap-x-4 gap-y-8 w-11/12 mx-auto">
         {/* Aqui deberias renderizar las cards */}
         {cards}

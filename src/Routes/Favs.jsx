@@ -10,7 +10,7 @@ const Favs = () => {
 
   return (
     <div className="flex-1 dark:bg-bg_secondary">
-      <h1 className="text-center text-3xl font-bold text-secondary mt-16">
+      <h1 className="text-center text-3xl font-bold text-bg_secondary dark:text-primary mt-16 mb-8">
         Favoritos
       </h1>
       <div className="card-grid">
