@@ -43,9 +43,11 @@ const Card = ({ name, username, id }) => {
           />
         </figure>
         <div className="text-center">
-          <h5 className="text-xl font-medium text-center text-gray-900 dark:text-primary">
-            {name}
-          </h5>
+          <Link to={"/dentist/" + id}>
+            <h5 className="text-xl font-medium text-center text-gray-900 dark:text-primary">
+              {name}
+            </h5>
+          </Link>
           <p className="text-sm text-gray-500 dark:text-gray-400">{username}</p>
         </div>
         <div className="flex gap-2 w-full">

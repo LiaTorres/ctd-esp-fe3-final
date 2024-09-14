@@ -1,10 +1,10 @@
-const favoritesList = localStorage.getItem("favorites")
-  ? JSON.parse(localStorage.getItem("favorites"))
-  : [];
+const favoritesList = JSON.parse(localStorage.getItem("favorites")) || [];
+const savedTheme = localStorage.getItem("theme") === "dark";
 
 export const initialState = {
   favorites: favoritesList,
   odontologos: [],
+  theme: savedTheme ?? true, 
 };
 
 export const reducer = (state = initialState, action) => {
@@ -26,8 +26,15 @@ export const reducer = (state = initialState, action) => {
           (favorite) => favorite.id !== action.payload.id
         ),
       };
+    case "TOGGLE_THEME":
+      const newTheme = !state.theme;
+      localStorage.setItem("theme", newTheme ? "dark" : "light");
+      return {
+        ...state,
+        theme: newTheme,
+      };
+      // return { ...state, theme: [...state.theme, action.payload] };
     default:
       return state;
   }
 };
-
