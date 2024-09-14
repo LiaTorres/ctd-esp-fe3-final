@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Heart from "../../public/images/heart.svg";
-import HeartFill from "../../public/images/heart-fill.svg";
 import Button from "./Button";
 import { useChartStates } from "./Context";
 
 const Card = ({ name, username, id }) => {
-  const [heartImg, setHeartImg] = useState(Heart);
-  const [buttonText, setButtonText] = useState("Add fav");
+  const heart = (
+    <i className="fa-regular fa-heart text-2xl py-1 text-gray-500" />
+  );
+  const heartFill = (
+    <i className="fa-solid fa-heart text-red-500 text-2xl py-1" />
+  );
+
+  const [heartImg, setHeartImg] = useState(heart);
   const { state, dispatch } = useChartStates();
   const isFav = state.favorites.find((fav) => fav.id === id);
 
   useEffect(() => {
     if (isFav) {
-      setHeartImg(HeartFill);
-      setButtonText("Remove fav");
+      setHeartImg(heartFill);
     } else {
-      setHeartImg(Heart);
-      setButtonText("Add fav");
+      setHeartImg(heart);
     }
   }, [isFav]);
 
@@ -30,9 +32,6 @@ const Card = ({ name, username, id }) => {
 
   return (
     <div className="w-full xl:w-4/5 max-w-sm cursor-default relative">
-      <figure className="absolute top-2 right-3 cursor-pointer">
-        <img src={heartImg} alt="Heart" />
-      </figure>
       <div className="card w-full max-w-sm bg-primary border border-gray-200 rounded-lg shadow gap-4 p-4 dark:bg-gray-800 dark:border-gray-700">
         {/* En cada card deberan mostrar en name - username y el id */}
 
@@ -58,9 +57,9 @@ const Card = ({ name, username, id }) => {
           <div className="flex-1">
             <button
               onClick={addFav}
-              className="favButton rounded-md bg-blue-600 hover:bg-blue-700 text-primary focus:ring-4 focus:outline-none focus:ring-blue-500"
+              className="favButton rounded-md flex justify-center items-center border dark:border-gray-600 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary"
             >
-              {buttonText}
+              {heartImg}
             </button>
           </div>
           <div className="flex-1">

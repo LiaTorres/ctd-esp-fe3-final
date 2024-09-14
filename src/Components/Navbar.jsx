@@ -11,7 +11,9 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center py-2 px-8 border-b dark:border-b-gray-700 sticky top-0 z-50 bg-primary shadow dark:bg-bg_secondary dark:text-primary">
-      <Logo />
+      <Link to={"/home"}>
+        <Logo />
+      </Link>
       <nav className="gap-4 dark:text-primary justify-center items-center">
         {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
         {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
