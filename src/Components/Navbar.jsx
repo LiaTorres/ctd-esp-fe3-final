@@ -18,7 +18,17 @@ const Navbar = () => {
         <Link to="/home">Inicio</Link>
         <Link to="/contact">Contacto</Link>
         <Link to="/favs"> Destacados</Link>
-        <Button onClick={toggleTheme} state={state} textContent="Change theme" />
+        <Button
+          onClick={toggleTheme}
+          state={state}
+          textContent={
+            state.theme ? (
+              <i className="fa-solid fa-sun px-2 py-1" />
+            ) : (
+              <i className="fa-solid fa-moon px-2 py-1" />
+            )
+          }
+        />
       </nav>
     </div>
   );
