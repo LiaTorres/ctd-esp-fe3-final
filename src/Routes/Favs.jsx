@@ -6,7 +6,7 @@ import { useChartStates } from "../Components/Context";
 
 const Favs = () => {
   const { state } = useChartStates();
-  console.log(state.favorites);
+  console.log("PRUEBA: ");
 
   return (
     <div className="flex-1 dark:bg-bg_secondary">
@@ -16,8 +16,13 @@ const Favs = () => {
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage /}
         {/ Deberan renderizar una Card por cada uno de ellos */}
-        {state?.favorites?.map((char) => (
-          <Card key={char.id} char={char} />
+        {state.favorites.map((item) => (
+          <Card
+            key={item.id}
+            name={item.name}
+            username={item.username}
+            id={item.id}
+          />
         ))}
       </div>
     </div>
